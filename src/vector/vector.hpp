@@ -15,9 +15,6 @@
 namespace dsacpp
 {
 
-constexpr size_t VECTOR_DEFAULT_CAPACITY = 16;
-constexpr u_int16_t VECTOR_GROWTH_RATE = 2;
-
 template<typename T>
 class vector {
 public:
@@ -226,6 +223,10 @@ public:
    const_reverse_iterator rend() const noexcept;
 
 private:
+
+   static constexpr size_t VECTOR_DEFAULT_CAPACITY = 16;
+   static constexpr u_int16_t VECTOR_GROWTH_RATE = 2;
+
    size_type size_ = 0;
    size_type capacity_ = 0;
    pointer data_ = nullptr;
