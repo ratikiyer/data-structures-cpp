@@ -151,7 +151,9 @@ private:
    deleter_type del_;
 };
 
-// implementation
+/**
+ * Default Implementation
+ */
 template<typename T, typename D>
 unique_ptr<T, D>::unique_ptr() :
    ptr_{ nullptr },
@@ -247,7 +249,9 @@ unique_ptr<T, D>::operator bool() const noexcept {
    return ptr_ != nullptr;
 }
 
-// template specialization for arrays
+/**
+ * Template Partial Specialization (Array) Implementation
+ */
 template<typename T, typename D>
 unique_ptr<T[], D>::unique_ptr() :
    ptr_{ nullptr },
@@ -329,7 +333,7 @@ typename unique_ptr<T[], D>::element_type& unique_ptr<T[], D>::operator[](size_t
    if (ptr_) {
       return ptr_[index];
    } else {
-      throw std::logic_error("unique_ptr::operator* attempting to dereference nullptr");
+      throw std::logic_error("unique_ptr::operator[] attempting to dereference nullptr");
    }
 }
 
